@@ -82,6 +82,9 @@
       },
       {
         "__id__": 25
+      },
+      {
+        "__id__": 26
       }
     ],
     "_prefab": null,
@@ -950,6 +953,18 @@
     },
     "bg2": {
       "__id__": 6
+    },
+    "golbal": {
+      "__id__": 26
     }
+  },
+  {
+    "__type__": "4f6b8HXwXdHAY9S/bFw2ewX",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 2
+    },
+    "_enabled": true
   }
 ]

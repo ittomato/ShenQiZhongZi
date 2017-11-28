@@ -1,4 +1,5 @@
 
+import { Golbal } from "./Golbal"
 const { ccclass, property } = cc._decorator;
 
 @ccclass
@@ -23,23 +24,22 @@ export default class NewClass extends cc.Component {
 
     @property(cc.Node)
     bg2: cc.Node = null;
-    onLoad() {
-        // cc.director.getPhysicsManager().enabled = true;
-    }
+
+    @property(Golbal)
+    golbal: Golbal = null;
+    // onLoad() {
+    // }
 
     start() {
         cc.director.setDisplayStats(false);
         this.btnStart.on(cc.Node.EventType.TOUCH_START, this.startGame, this);
-        this.btnStart.on(cc.Node.EventType.MOUSE_ENTER, this.setCursor, this);
-        this.btnStart.on(cc.Node.EventType.MOUSE_LEAVE, this.clearCursor, this);
-
+        this.btnStart.on(cc.Node.EventType.MOUSE_ENTER, this.golbal.setCursor, this);
+        this.btnStart.on(cc.Node.EventType.MOUSE_LEAVE, this.golbal.clearCursor, this);
         this.btnStart.on(cc.Node.EventType.TOUCH_START, this.startGame, this);
-        this.btnMusic.on(cc.Node.EventType.MOUSE_ENTER, this.setCursor, this);
-        this.btnMusic.on(cc.Node.EventType.MOUSE_LEAVE, this.clearCursor, this);
-
+        this.btnMusic.on(cc.Node.EventType.MOUSE_ENTER, this.golbal.setCursor, this);
+        this.btnMusic.on(cc.Node.EventType.MOUSE_LEAVE, this.golbal.clearCursor, this);
         let anim = this.title.getComponent(cc.Animation);
         anim.play("showTitle");
-
     }
     startGame() {
 
@@ -59,9 +59,7 @@ export default class NewClass extends cc.Component {
             anim.play("hideTitle");
             anim.once("finished", function () {
                 this.title.active = false;
-
             }, this)
-
             //显示梨子
             let anim_showLiZi = this.lizi.getComponent(cc.Animation);
             anim_showLiZi.play("showLiZi");
@@ -70,12 +68,13 @@ export default class NewClass extends cc.Component {
             }, this)
         }
     }
-    setCursor() {
-        cc._canvas.style.cursor = 'pointer';
+    onDestroy() {
+        this.btnStart.off(cc.Node.EventType.TOUCH_START, this.startGame, this);
+        this.btnStart.off(cc.Node.EventType.MOUSE_ENTER, this.golbal.setCursor, this);
+        this.btnStart.off(cc.Node.EventType.MOUSE_LEAVE, this.golbal.clearCursor, this);
+        this.btnStart.off(cc.Node.EventType.TOUCH_START, this.startGame, this);
+        this.btnMusic.off(cc.Node.EventType.MOUSE_ENTER, this.golbal.setCursor, this);
+        this.btnMusic.off(cc.Node.EventType.MOUSE_LEAVE, this.golbal.clearCursor, this);
+        this.golbal.clearCursor();
     }
-    clearCursor() {
-        cc._canvas.style.cursor = "default"
-    }
-
-    // update (dt) {},
 }

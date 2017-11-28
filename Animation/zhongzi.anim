@@ -1,0 +1,129 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "zhongzi",
+  "_objFlags": 0,
+  "_rawFiles": null,
+  "_duration": 2.3333333333333335,
+  "sample": 60,
+  "speed": 1,
+  "wrapMode": 1,
+  "curveData": {
+    "props": {
+      "position": [
+        {
+          "frame": 0,
+          "value": [
+            -534,
+            -9
+          ]
+        },
+        {
+          "frame": 0.6666666666666666,
+          "value": [
+            -132,
+            500
+          ]
+        },
+        {
+          "frame": 1,
+          "value": [
+            -145,
+            514
+          ]
+        },
+        {
+          "frame": 1.3333333333333333,
+          "value": [
+            -129,
+            496
+          ]
+        },
+        {
+          "frame": 1.8333333333333333,
+          "value": [
+            -129,
+            496
+          ]
+        },
+        {
+          "frame": 2.3333333333333335,
+          "value": [
+            -534,
+            -9
+          ]
+        }
+      ],
+      "rotation": [
+        {
+          "frame": 0,
+          "value": 0
+        },
+        {
+          "frame": 0.6666666666666666,
+          "value": 138
+        },
+        {
+          "frame": 1.8333333333333333,
+          "value": 138
+        },
+        {
+          "frame": 2.3333333333333335,
+          "value": 0
+        }
+      ]
+    },
+    "paths": {
+      "zhongzi": {
+        "props": {
+          "active": [
+            {
+              "frame": 0,
+              "value": false
+            },
+            {
+              "frame": 1.3333333333333333,
+              "value": true
+            },
+            {
+              "frame": 1.8333333333333333,
+              "value": false
+            }
+          ],
+          "position": [
+            {
+              "frame": 1.3333333333333333,
+              "value": [
+                0,
+                55
+              ]
+            },
+            {
+              "frame": 1.8333333333333333,
+              "value": [
+                50,
+                238
+              ]
+            }
+          ],
+          "rotation": [
+            {
+              "frame": 1.3333333333333333,
+              "value": 0
+            },
+            {
+              "frame": 1.8333333333333333,
+              "value": -146
+            }
+          ]
+        }
+      }
+    }
+  },
+  "events": [
+    {
+      "frame": 1.8333333333333333,
+      "func": "onMaiZhongZi",
+      "params": []
+    }
+  ]
+}
