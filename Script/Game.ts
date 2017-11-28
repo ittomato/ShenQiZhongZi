@@ -34,8 +34,15 @@ export default class NewClass extends cc.Component {
     @property(cc.Node)
     jiaoShui: cc.Node = null;
 
-    numLifeState: number = 0;
 
+    @property(cc.Node)
+    huafei: cc.Node = null;
+
+    @property(cc.Node)
+    chucao: cc.Node = null;
+
+
+    numLifeState: number = 0;
     currentJiFen: number = 0;
     currentQuestion: number = 0;//当前题目（总共5题，从0开始）
     arrQuestion: any = []
@@ -76,6 +83,10 @@ export default class NewClass extends cc.Component {
                 let anim_jaoShui = this.jiaoShui.getComponent(cc.Animation);
                 anim_jaoShui.play("jaoshui");
                 anim_jaoShui.once("finished", this.onJiaoShuiFinished, this);//浇水动画结束
+            } else if (this.currentQuestion == 2) {
+                let anim_huafei = this.huafei.getComponent(cc.Animation);
+                anim_huafei.play("huafeipass");
+                anim_huafei.once("finished", this.onHuaFeiFinished, this);//浇水动画结束
             }
         } else {
             cc.log("答案错了")
@@ -89,6 +100,15 @@ export default class NewClass extends cc.Component {
                 let anim_jaoShui = this.jiaoShui.getComponent(cc.Animation);
                 anim_jaoShui.play("error2");
                 anim_jaoShui.once("finished", this.onJaoShuiError, this);
+            }
+            else if (this.currentQuestion == 2) {
+                let anim_huafei = this.huafei.getComponent(cc.Animation);
+                anim_huafei.play("huafei");
+                anim_huafei.once("finished", this.onHuaFeiError, this);
+            } else if (this.currentQuestion == 3) {
+                let anim_chucao = this.chucao.getComponent(cc.Animation);
+                anim_chucao.play("chucao");
+                anim_chucao.once("finished", this.onChuCao, this);
             }
         }
     }
@@ -114,5 +134,20 @@ export default class NewClass extends cc.Component {
         this.jifen.string = this.currentJiFen.toString();
         this.currentQuestion = this.currentQuestion + 1;
         this.loadQuestion(this.currentQuestion);
+    }
+    onHuaFeiError() {
+        cc.log("化肥");
+        this.numLifeState++;
+        this.lifeState.spriteFrame = this.lifeSpriteAtlas.getSpriteFrame("life" + this.numLifeState);
+    }
+    onHuaFeiFinished() {
+        this.currentJiFen = this.currentJiFen + 20;
+        this.jifen.string = this.currentJiFen.toString();
+        this.currentQuestion = this.currentQuestion + 1;
+        this.loadQuestion(this.currentQuestion);
+    }
+    onChuCao() {
+        this.numLifeState++;
+        this.lifeState.spriteFrame = this.lifeSpriteAtlas.getSpriteFrame("life" + this.numLifeState);
     }
 }
