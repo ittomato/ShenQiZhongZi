@@ -1,0 +1,56 @@
+{
+  "ver": "1.2.4",
+  "uuid": "86621e6e-20e7-412f-b5b0-3349cf192f6c",
+  "rawTextureUuid": "66453ab8-7d09-4fcb-97bf-abef999d6b9e",
+  "size": {
+    "width": 256,
+    "height": 512
+  },
+  "type": "Texture Packer",
+  "subMetas": {
+    "feili0001.png": {
+      "ver": "1.0.3",
+      "uuid": "1c54d3cd-29a8-4c28-94c1-7a784ef862cf",
+      "rawTextureUuid": "66453ab8-7d09-4fcb-97bf-abef999d6b9e",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": true,
+      "offsetX": 0,
+      "offsetY": 4,
+      "trimX": 2,
+      "trimY": 2,
+      "width": 260,
+      "height": 252,
+      "rawWidth": 260,
+      "rawHeight": 260,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "spriteType": "normal",
+      "subMetas": {}
+    },
+    "feili0002.png": {
+      "ver": "1.0.3",
+      "uuid": "a2292561-e739-4fc2-bac8-8eade412be5f",
+      "rawTextureUuid": "66453ab8-7d09-4fcb-97bf-abef999d6b9e",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -12,
+      "offsetY": -2,
+      "trimX": 2,
+      "trimY": 264,
+      "width": 236,
+      "height": 244,
+      "rawWidth": 260,
+      "rawHeight": 260,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "spriteType": "normal",
+      "subMetas": {}
+    }
+  }
+}

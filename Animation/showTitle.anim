@@ -1,0 +1,45 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "showTitle",
+  "_objFlags": 0,
+  "_rawFiles": null,
+  "_duration": 0.75,
+  "sample": 60,
+  "speed": 1,
+  "wrapMode": 1,
+  "curveData": {
+    "props": {
+      "y": [
+        {
+          "frame": 0.5,
+          "value": 731
+        },
+        {
+          "frame": 0.75,
+          "value": 0
+        }
+      ],
+      "scaleX": [
+        {
+          "frame": 0.5,
+          "value": 0.1
+        },
+        {
+          "frame": 0.75,
+          "value": 1
+        }
+      ],
+      "scaleY": [
+        {
+          "frame": 0.5,
+          "value": 0.1
+        },
+        {
+          "frame": 0.75,
+          "value": 1
+        }
+      ]
+    }
+  },
+  "events": []
+}
