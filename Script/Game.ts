@@ -205,12 +205,14 @@ export default class NewClass extends cc.Component {
     //阳光照射完成
     onYangGuangFinished() {
         cc.log("游戏成功了");
+        cc.director.loadScene("EndWin");
     }
 
     //检查生命值
     checkLifeState() {
         if (this.numLifeState == 2) {
             cc.log("游戏结束");
+            cc.director.loadScene("EndFail");
         } else {
             this.numLifeState++;
         }
