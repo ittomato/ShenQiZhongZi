@@ -44,7 +44,11 @@ export default class NewClass extends cc.Component {
         let anim = this.title.getComponent(cc.Animation);
         anim.play("showTitle");
         cc.game.addPersistRootNode(this.btnMusic);
+        cc.director.preloadScene("game", function () {
+            cc.log("game场景加载完成");
+        });
     }
+
     startGame() {
 
         if (this.isLoading) return false;
@@ -52,9 +56,7 @@ export default class NewClass extends cc.Component {
         if (this.lizi.active) {
             cc.director.loadScene("game");
         } else {
-            cc.director.preloadScene("game", function () {
-                cc.log("game场景加载完成");
-            });
+
             this.bg.active = false;
             this.bg2.active = true;
             this.lizi.active = true;
@@ -70,6 +72,7 @@ export default class NewClass extends cc.Component {
             anim_showLiZi.once("finished", function () {
                 this.isLoading = false;
             }, this)
+
         }
     }
 

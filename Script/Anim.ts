@@ -36,7 +36,6 @@ export default class NewClass extends cc.Component {
 
     //动画回调方法
     onMaiZhongZi() {
-        cc.log("埋种子动画")
         let anim_maiZhongZi = this.maiZhongZi.getComponent(cc.Animation).play("maizhongzi");//埋种子动画
     }
 
