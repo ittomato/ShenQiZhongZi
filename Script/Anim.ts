@@ -133,8 +133,8 @@ export default class NewClass extends cc.Component {
     }
 
     onKaiHua() {
+        this.damiao.active = false;
         this.star.active = this.guangxian.active = this.kaihua.active = true;
-
         let anim_star = this.star.getComponent(cc.Animation);
         anim_star.play("xingguang");
         anim_star.once("finished", function () {

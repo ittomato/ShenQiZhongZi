@@ -479,7 +479,9 @@
     "_N$normalSprite": {
       "__uuid__": "763ee29a-0991-46d0-a000-5338a92b24a6"
     },
-    "_N$disabledSprite": null,
+    "_N$disabledSprite": {
+      "__uuid__": "763ee29a-0991-46d0-a000-5338a92b24a6"
+    },
     "_N$target": {
       "__id__": 9
     }
@@ -862,8 +864,8 @@
     "_spriteFrame": {
       "__uuid__": "97d04f96-5d52-4d2c-86aa-558f7f6a01c0"
     },
-    "_type": 1,
-    "_sizeMode": 2,
+    "_type": 0,
+    "_sizeMode": 0,
     "_fillType": 0,
     "_fillCenter": {
       "__type__": "cc.Vec2",
