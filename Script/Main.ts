@@ -46,7 +46,7 @@ export default class NewClass extends cc.Component {
         if (this.isLoading) return false;
         this.isLoading = true;
         if (this.lizi.active) {
-            cc.director.loadScene("game");
+            cc.director.loadScene("EndWin");
         } else {
             cc.director.preloadScene("game", function () {
                 cc.log("game场景加载完成");

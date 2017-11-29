@@ -3,7 +3,7 @@
   "_name": "zhangcao",
   "_objFlags": 0,
   "_rawFiles": null,
-  "_duration": 0.2,
+  "_duration": 0.6833333333333333,
   "sample": 60,
   "speed": 0.3,
   "wrapMode": 1,
@@ -81,6 +81,12 @@
             "frame": 0.18333333333333332,
             "value": {
               "__uuid__": "431b2321-ed8e-4997-8524-4d9a234440fb"
+            }
+          },
+          {
+            "frame": 0.6666666666666666,
+            "value": {
+              "__uuid__": "27527738-db60-40e9-8730-125dfd18eccc"
             }
           }
         ]

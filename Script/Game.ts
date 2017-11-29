@@ -41,11 +41,18 @@ export default class NewClass extends cc.Component {
     @property(cc.Node)
     chucao: cc.Node = null;
 
+    @property(cc.Node)
+    zacaoAnim: cc.Node[] = [];
+
+    @property(cc.Node)
+    yangguang: cc.Node = null;
 
     numLifeState: number = 0;
     currentJiFen: number = 0;
     currentQuestion: number = 0;//当前题目（总共5题，从0开始）
-    arrQuestion: any = []
+    arrQuestion: any = [];
+    isLoading: boolean = false;
+
 
     // onLoad () {},
     start() {
@@ -70,6 +77,8 @@ export default class NewClass extends cc.Component {
     }
     //选择答案
     selectAnswer(event) {
+        if (this.isLoading) return false;
+        this.isLoading = true;
         let answer = event.target.getComponent(cc.Label).string;//选择的答案
         let answerOk = this.arrQuestion[this.currentQuestion].answerOk;//正确答案
         if (answer == answerOk) {
@@ -87,6 +96,14 @@ export default class NewClass extends cc.Component {
                 let anim_huafei = this.huafei.getComponent(cc.Animation);
                 anim_huafei.play("huafeipass");
                 anim_huafei.once("finished", this.onHuaFeiFinished, this);//浇水动画结束
+            } else if (this.currentQuestion == 3) {
+                let anim_chucao = this.chucao.getComponent(cc.Animation);
+                anim_chucao.play("chucaopass");
+                anim_chucao.once("finished", this.onChuCaoFinished, this);//浇水动画结束
+            } else if (this.currentQuestion == 4) {
+                let anim_yangguang = this.yangguang.getComponent(cc.Animation);
+                anim_yangguang.play("yangguangpass");
+                anim_yangguang.once("finished", this.onYangGuangFinished, this);//浇水动画结束
             }
         } else {
             cc.log("答案错了")
@@ -108,7 +125,11 @@ export default class NewClass extends cc.Component {
             } else if (this.currentQuestion == 3) {
                 let anim_chucao = this.chucao.getComponent(cc.Animation);
                 anim_chucao.play("chucao");
-                anim_chucao.once("finished", this.onChuCao, this);
+                anim_chucao.once("finished", this.onChuCaoError, this);
+            } else if (this.currentQuestion == 4) {
+                let anim_yangguang = this.yangguang.getComponent(cc.Animation);
+                anim_yangguang.play("sunerror");
+                anim_yangguang.once("finished", this.onYangGuangError, this);
             }
         }
     }
@@ -118,36 +139,82 @@ export default class NewClass extends cc.Component {
         this.jifen.string = this.currentJiFen.toString();
         this.currentQuestion = this.currentQuestion + 1;
         this.loadQuestion(this.currentQuestion);
+        this.isLoading = false;
     }
     //错误答案回调
     onZhongZiError() {
-        this.numLifeState++;
+        this.checkLifeState();
         this.lifeState.spriteFrame = this.lifeSpriteAtlas.getSpriteFrame("life" + this.numLifeState);
+        this.isLoading = false;
     }
+    //浇水错误
     onJaoShuiError() {
-        this.numLifeState++;
+        this.checkLifeState();
         this.lifeState.spriteFrame = this.lifeSpriteAtlas.getSpriteFrame("life" + this.numLifeState);
+        this.isLoading = false;
     }
+    //浇水完成
     onJiaoShuiFinished() {
         cc.log("浇水");
         this.currentJiFen = this.currentJiFen + 20;
         this.jifen.string = this.currentJiFen.toString();
         this.currentQuestion = this.currentQuestion + 1;
         this.loadQuestion(this.currentQuestion);
+        this.isLoading = false;
     }
+    //施肥错误
     onHuaFeiError() {
         cc.log("化肥");
-        this.numLifeState++;
+        this.checkLifeState();
         this.lifeState.spriteFrame = this.lifeSpriteAtlas.getSpriteFrame("life" + this.numLifeState);
+        this.isLoading = false;
     }
+    //施肥完成
     onHuaFeiFinished() {
         this.currentJiFen = this.currentJiFen + 20;
         this.jifen.string = this.currentJiFen.toString();
         this.currentQuestion = this.currentQuestion + 1;
         this.loadQuestion(this.currentQuestion);
+        this.isLoading = false;
     }
-    onChuCao() {
-        this.numLifeState++;
+    //除草错误
+    onChuCaoError() {
+        this.zacaoAnim.forEach(element => {
+            element.active = false;
+        });
+        this.checkLifeState();
         this.lifeState.spriteFrame = this.lifeSpriteAtlas.getSpriteFrame("life" + this.numLifeState);
+        this.isLoading = false;
     }
+
+    //除草完成
+    onChuCaoFinished() {
+        this.currentJiFen = this.currentJiFen + 20;
+        this.jifen.string = this.currentJiFen.toString();
+        this.currentQuestion = this.currentQuestion + 1;
+        this.loadQuestion(this.currentQuestion);
+        this.isLoading = false;
+    }
+
+    //阳光照射错误
+    onYangGuangError() {
+        this.checkLifeState();
+        this.lifeState.spriteFrame = this.lifeSpriteAtlas.getSpriteFrame("life" + this.numLifeState);
+        this.isLoading = false;
+    }
+    //阳光照射完成
+    onYangGuangFinished() {
+        cc.log("游戏成功了");
+    }
+
+    //检查生命值
+    checkLifeState() {
+        if (this.numLifeState == 2) {
+            cc.log("游戏结束");
+        } else {
+            this.numLifeState++;
+        }
+    }
+
+
 }

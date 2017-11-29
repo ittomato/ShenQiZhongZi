@@ -1,0 +1,51 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "yangguangpass",
+  "_objFlags": 0,
+  "_rawFiles": null,
+  "_duration": 2.3333333333333335,
+  "sample": 60,
+  "speed": 1,
+  "wrapMode": 1,
+  "curveData": {
+    "props": {
+      "position": [
+        {
+          "frame": 0,
+          "value": [
+            718,
+            0
+          ]
+        },
+        {
+          "frame": 0.6666666666666666,
+          "value": [
+            268,
+            500
+          ]
+        },
+        {
+          "frame": 1.8333333333333333,
+          "value": [
+            268,
+            500
+          ]
+        },
+        {
+          "frame": 2.3333333333333335,
+          "value": [
+            718,
+            0
+          ]
+        }
+      ]
+    }
+  },
+  "events": [
+    {
+      "frame": 0.6666666666666666,
+      "func": "onKaiHua",
+      "params": []
+    }
+  ]
+}

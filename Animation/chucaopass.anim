@@ -1,0 +1,127 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "chucaopass",
+  "_objFlags": 0,
+  "_rawFiles": null,
+  "_duration": 3.6666666666666665,
+  "sample": 60,
+  "speed": 1,
+  "wrapMode": 1,
+  "curveData": {
+    "props": {
+      "position": [
+        {
+          "frame": 0,
+          "value": [
+            405,
+            0
+          ]
+        },
+        {
+          "frame": 0.6666666666666666,
+          "value": [
+            92,
+            289
+          ]
+        },
+        {
+          "frame": 1.3333333333333333,
+          "value": [
+            92,
+            289
+          ]
+        },
+        {
+          "frame": 1.6666666666666667,
+          "value": [
+            -183,
+            289
+          ]
+        },
+        {
+          "frame": 2.3333333333333335,
+          "value": [
+            -183,
+            289
+          ]
+        },
+        {
+          "frame": 2.6666666666666665,
+          "value": [
+            -203,
+            393
+          ]
+        },
+        {
+          "frame": 3.3333333333333335,
+          "value": [
+            -203,
+            393
+          ]
+        },
+        {
+          "frame": 3.6666666666666665,
+          "value": [
+            405,
+            0
+          ]
+        }
+      ],
+      "rotation": [
+        {
+          "frame": 0.6666666666666666,
+          "value": 0
+        },
+        {
+          "frame": 1,
+          "value": -11
+        },
+        {
+          "frame": 1.3333333333333333,
+          "value": 0
+        },
+        {
+          "frame": 1.6666666666666667,
+          "value": 0
+        },
+        {
+          "frame": 2,
+          "value": -12
+        },
+        {
+          "frame": 2.3333333333333335,
+          "value": 0
+        },
+        {
+          "frame": 2.6666666666666665,
+          "value": 0
+        },
+        {
+          "frame": 3,
+          "value": -12
+        },
+        {
+          "frame": 3.3333333333333335,
+          "value": 0
+        }
+      ]
+    }
+  },
+  "events": [
+    {
+      "frame": 1.3333333333333333,
+      "func": "onChuCaoPass1",
+      "params": []
+    },
+    {
+      "frame": 2.3333333333333335,
+      "func": "onChuCaoPass2",
+      "params": []
+    },
+    {
+      "frame": 3.3333333333333335,
+      "func": "onChuCaoPass3",
+      "params": []
+    }
+  ]
+}

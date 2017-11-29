@@ -27,6 +27,13 @@ export default class NewClass extends cc.Component {
     @property(cc.Node)
     xiaocao: cc.Node[] = [];
 
+    @property(cc.Node)
+    huangtudi: cc.Node = null;
+
+    @property(cc.Node)
+    kaihua: cc.Node = null;
+
+
     //动画回调方法
     onMaiZhongZi() {
         cc.log("埋种子动画")
@@ -66,25 +73,79 @@ export default class NewClass extends cc.Component {
         }, this)
     }
     onZhangCao1() {
-
-        this.xiaocao.forEach(element => {
-            element.active = true;
-        });
+        this.xiaocao[0].active = true;
         let anim_xiao = this.xiaocao[0].getComponent(cc.Animation);
         anim_xiao.play("zhangcao");
     }
     onZhangCao2() {
+        this.xiaocao[1].active = true;
         let anim_xiao = this.xiaocao[1].getComponent(cc.Animation);
         anim_xiao.play("zhangcao");
     }
     onZhangCao3() {
+        this.xiaocao[2].active = true;
         let anim_xiao = this.xiaocao[2].getComponent(cc.Animation);
         anim_xiao.play("zhangcao");
         anim_xiao.once("finished", function () {
             this.xiaocao.forEach(element => {
-                anim_xiao.stop();
                 element.active = false;
             });
         }, this)
+    }
+    onChuCaoPass1() {
+
+        let xc = this.zacao.children;
+        xc.forEach(element => {
+            if (element.name == "xiaocao1") {
+                element.runAction(cc.fadeOut(0.5));
+            }
+        })
+    }
+    onChuCaoPass2() {
+        let xc = this.zacao.children;
+        xc.forEach(element => {
+            if (element.name == "xiaocao2") {
+                element.runAction(cc.fadeOut(0.5));
+            }
+        })
+    }
+    onChuCaoPass3() {
+        let xc = this.zacao.children;
+        xc.forEach(element => {
+            if (element.name == "xiaocao3") {
+                element.runAction(cc.fadeOut(0.5));
+            }
+        })
+    }
+
+    onYangGuang() {
+        this.guangxian.active = this.huangtudi.active = true;
+        let anim_huangtudi = this.huangtudi.getComponent(cc.Animation);
+        anim_huangtudi.play("showhuangtudi");
+        anim_huangtudi.once("finished", function () {
+            this.huangtudi.active = false;
+        }, this)
+        let anim_guangxian = this.guangxian.getComponent(cc.Animation);
+        anim_guangxian.play("guangxian");
+        anim_guangxian.once("finished", function () {
+            this.guangxian.active = false;
+        }, this)
+    }
+
+    onKaiHua() {
+        this.star.active = this.guangxian.active = this.kaihua.active = true;
+
+        let anim_star = this.star.getComponent(cc.Animation);
+        anim_star.play("xingguang");
+        anim_star.once("finished", function () {
+            this.star.active = false;
+        }, this)
+        let anim_guangxian = this.guangxian.getComponent(cc.Animation);
+        anim_guangxian.play("guangxian");
+        anim_guangxian.once("finished", function () {
+            this.guangxian.active = false;
+        }, this)
+        let anim_kaihua = this.kaihua.getComponent(cc.Animation);
+        anim_kaihua.play("kaihua");
     }
 }

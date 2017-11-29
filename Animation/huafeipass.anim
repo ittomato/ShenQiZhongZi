@@ -3,7 +3,7 @@
   "_name": "huafeipass",
   "_objFlags": 0,
   "_rawFiles": null,
-  "_duration": 2.3333333333333335,
+  "_duration": 2.33,
   "sample": 60,
   "speed": 1,
   "wrapMode": 1,
@@ -76,6 +76,10 @@
             {
               "frame": 1,
               "value": true
+            },
+            {
+              "frame": 1.6166666666666667,
+              "value": false
             },
             {
               "frame": 1.8333333333333333,
