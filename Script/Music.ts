@@ -19,9 +19,7 @@ export default class NewClass extends cc.Component {
         this.node.on("touchstart", this.stopMusic, this);
     }
     stopMusic() {
-
         let audioState = cc.audioEngine.getState(this.audioId);
-        cc.log(audioState);
         if (audioState == 1) {
             cc.audioEngine.pause(this.audioId);
             let musicSprite = this.node.getComponent(cc.Sprite);
