@@ -47,6 +47,16 @@ export default class NewClass extends cc.Component {
     @property(cc.Node)
     yangguang: cc.Node = null;
 
+    @property({
+        url: cc.AudioClip
+    })
+    audio_Pass: string = '';
+
+    @property({
+        url: cc.AudioClip
+    })
+    audio_Fail: string = '';
+
     numLifeState: number = 0;
     currentJiFen: number = 0;
     currentQuestion: number = 0;//当前题目（总共5题，从0开始）
@@ -56,6 +66,7 @@ export default class NewClass extends cc.Component {
 
     // onLoad () {},
     start() {
+
         this.loadQuestion(this.currentQuestion);
         //设置光标
         this.lblAnswer.forEach(element => {
@@ -82,51 +93,59 @@ export default class NewClass extends cc.Component {
         let answer = event.target.getComponent(cc.Label).string;//选择的答案
         let answerOk = this.arrQuestion[this.currentQuestion].answerOk;//正确答案
         if (answer == answerOk) {
-            cc.log("答案正确")
-
+            // cc.log("答案正确")
             if (this.currentQuestion == 0) {
+                cc.audioEngine.play(this.audio_Pass, false, 0.5);
                 let anim_ZhongZi = this.zhongzi.getComponent(cc.Animation);
                 anim_ZhongZi.play("zhongzi");
                 anim_ZhongZi.once("finished", this.onZhongZhiFinished, this);//种子动画结束
             } else if (this.currentQuestion == 1) {
+                cc.audioEngine.play(this.audio_Pass, false, 0.5);
                 let anim_jaoShui = this.jiaoShui.getComponent(cc.Animation);
                 anim_jaoShui.play("jaoshui");
                 anim_jaoShui.once("finished", this.onJiaoShuiFinished, this);//浇水动画结束
             } else if (this.currentQuestion == 2) {
+                cc.audioEngine.play(this.audio_Pass, false, 0.5);
                 let anim_huafei = this.huafei.getComponent(cc.Animation);
                 anim_huafei.play("huafeipass");
                 anim_huafei.once("finished", this.onHuaFeiFinished, this);//浇水动画结束
             } else if (this.currentQuestion == 3) {
+                cc.audioEngine.play(this.audio_Pass, false, 0.5);
                 let anim_chucao = this.chucao.getComponent(cc.Animation);
                 anim_chucao.play("chucaopass");
                 anim_chucao.once("finished", this.onChuCaoFinished, this);//浇水动画结束
             } else if (this.currentQuestion == 4) {
+                cc.audioEngine.play(this.audio_Pass, false, 0.5);
                 let anim_yangguang = this.yangguang.getComponent(cc.Animation);
                 anim_yangguang.play("yangguangpass");
                 anim_yangguang.once("finished", this.onYangGuangFinished, this);//浇水动画结束
             }
         } else {
-            cc.log("答案错了")
-
+            // cc.log("答案错了")
             if (this.currentQuestion == 0) {
+                cc.audioEngine.play(this.audio_Fail, false, 0.5);
                 let anim_ZhongZi = this.zhongzi.getComponent(cc.Animation);
                 anim_ZhongZi.play("error1");
                 anim_ZhongZi.once("finished", this.onZhongZiError, this);
             }
             else if (this.currentQuestion == 1) {
+                cc.audioEngine.play(this.audio_Fail, false, 0.5);
                 let anim_jaoShui = this.jiaoShui.getComponent(cc.Animation);
                 anim_jaoShui.play("error2");
                 anim_jaoShui.once("finished", this.onJaoShuiError, this);
             }
             else if (this.currentQuestion == 2) {
+                cc.audioEngine.play(this.audio_Fail, false, 0.5);
                 let anim_huafei = this.huafei.getComponent(cc.Animation);
                 anim_huafei.play("huafei");
                 anim_huafei.once("finished", this.onHuaFeiError, this);
             } else if (this.currentQuestion == 3) {
+                cc.audioEngine.play(this.audio_Fail, false, 0.5);
                 let anim_chucao = this.chucao.getComponent(cc.Animation);
                 anim_chucao.play("chucao");
                 anim_chucao.once("finished", this.onChuCaoError, this);
             } else if (this.currentQuestion == 4) {
+                cc.audioEngine.play(this.audio_Fail, false, 0.5);
                 let anim_yangguang = this.yangguang.getComponent(cc.Animation);
                 anim_yangguang.play("sunerror");
                 anim_yangguang.once("finished", this.onYangGuangError, this);
@@ -155,7 +174,6 @@ export default class NewClass extends cc.Component {
     }
     //浇水完成
     onJiaoShuiFinished() {
-        cc.log("浇水");
         this.currentJiFen = this.currentJiFen + 20;
         this.jifen.string = this.currentJiFen.toString();
         this.currentQuestion = this.currentQuestion + 1;
@@ -164,7 +182,6 @@ export default class NewClass extends cc.Component {
     }
     //施肥错误
     onHuaFeiError() {
-        cc.log("化肥");
         this.checkLifeState();
         this.lifeState.spriteFrame = this.lifeSpriteAtlas.getSpriteFrame("life" + this.numLifeState);
         this.isLoading = false;
@@ -204,14 +221,11 @@ export default class NewClass extends cc.Component {
     }
     //阳光照射完成
     onYangGuangFinished() {
-        cc.log("游戏成功了");
         cc.director.loadScene("EndWin");
     }
-
     //检查生命值
     checkLifeState() {
         if (this.numLifeState == 2) {
-            cc.log("游戏结束");
             cc.director.loadScene("EndFail");
         } else {
             this.numLifeState++;

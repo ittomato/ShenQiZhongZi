@@ -27,10 +27,12 @@ export default class NewClass extends cc.Component {
 
     @property(Golbal)
     golbal: Golbal = null;
+
     // onLoad() {
     // }
 
     start() {
+
         cc.director.setDisplayStats(false);
         this.btnStart.on(cc.Node.EventType.TOUCH_START, this.startGame, this);
         this.btnStart.on(cc.Node.EventType.MOUSE_ENTER, this.golbal.setCursor, this);
@@ -38,8 +40,10 @@ export default class NewClass extends cc.Component {
         this.btnStart.on(cc.Node.EventType.TOUCH_START, this.startGame, this);
         this.btnMusic.on(cc.Node.EventType.MOUSE_ENTER, this.golbal.setCursor, this);
         this.btnMusic.on(cc.Node.EventType.MOUSE_LEAVE, this.golbal.clearCursor, this);
+
         let anim = this.title.getComponent(cc.Animation);
         anim.play("showTitle");
+        cc.game.addPersistRootNode(this.btnMusic);
     }
     startGame() {
 
@@ -68,6 +72,7 @@ export default class NewClass extends cc.Component {
             }, this)
         }
     }
+
     onDestroy() {
         this.btnStart.off(cc.Node.EventType.TOUCH_START, this.startGame, this);
         this.btnStart.off(cc.Node.EventType.MOUSE_ENTER, this.golbal.setCursor, this);

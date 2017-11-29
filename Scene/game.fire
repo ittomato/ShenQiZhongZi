@@ -3745,6 +3745,12 @@
     ],
     "yangguang": {
       "__id__": 70
+    },
+    "audio_Pass": {
+      "__uuid__": "44b58499-52d4-451f-aac5-df6760af167a"
+    },
+    "audio_Fail": {
+      "__uuid__": "3d9b7553-6258-4a89-b33c-a6bbe883adf7"
     }
   },
   {
